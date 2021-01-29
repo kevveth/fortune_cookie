@@ -76,9 +76,8 @@ const generateMessage = (day = generateDay()[0], week = generateDay()[1]) => {
             'You never show your vulnerability, you are always self assured and confident.',
             'The best way to get rid of an enemy is to make a friend.'],
     }
-    let message = messages[day][week - 1]
 
-    return message
+    return messages[day][week - 1]
 }
 
 
@@ -98,17 +97,24 @@ const fortune = (day, luck, message) => {
 
         get message() {
             return this._message
+        },
+
+        read() {
+            console.log(`DAY: ${day[0]} #${day[1]}`)
+            console.log(`LUCK: ${luck === 'Good' ? 'Good -- Take risks and enjoy life!' :
+                luck === 'Bad' ? 'Bad -- Keep your head low and take it easy.' :
+                    'Unknown -- You are in for a surprise...'}`)
+            console.log(`FORTUNE: ${message}`)
         }
     }
 }
 
-let day = generateDay
-let luck = generateLuck
-let message = generateMessage
+let day = generateDay()
+let luck = generateLuck()
+let message = generateMessage()
 
-const fortuneCookie = fortune(day(), luck(), message())
+const fortuneCookie = fortune(day, luck, message)
 
-console.log(fortuneCookie.message)
-
+fortuneCookie.read()
 
 
